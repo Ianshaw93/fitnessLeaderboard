@@ -13,20 +13,19 @@ export default function LeaderboardCard({rank=1, name='Ian Shaw', weightLifted_k
         {rank}
       </div>
       <div className="col-span-2 flex justify-between max-w-full" >
-        <div className="col-start-2 col-span-1 row-start-1 row-span-1" >
-        {/* LHS column: description, weight below*/}
-        <div className="w-11 rounded-full flex justify-center items-center">
-            <FontAwesomeIcon icon={faCircleUser} size='3x' color='grey'/>
-        </div>  
-        <div>
-          <h2 className="">{name}</h2>
-        </div>      
-          {/* <h2 className="">{weightLifted_kg}kg</h2> */}
+        <div className='flex items-center'>
+
+            {/* <div className="col-start-2 col-span-1 row-start-1 row-span-1" > */}
+            <div className="w-11 rounded-full flex justify-center items-center">
+                <FontAwesomeIcon icon={faCircleUser} size='3x' color='grey'/>
+            </div>  
+            <h2 className="mx-5 text-xl">{name}</h2>
+            {/* </div> */}
         </div>
         {/* RHS column: price, price/weight below*/}
         <div className="col-start-3 col-span-1 mt-3" >
         {/* <h2 className="">{name}</h2> */}
-          <h2 className="row-span-1 text-2xl text-right font-bold">{weightLifted_kg}kg</h2>
+          <h2 className="row-span-1 text-2xl text-right font-bold">{weightLifted_kg ? weightLifted_kg + "kg" : "n/a"}</h2>
           {/* <h2 className="row-span-1">£pricePerKiloRounded/kg</h2> */}
         </div>
       </div>
