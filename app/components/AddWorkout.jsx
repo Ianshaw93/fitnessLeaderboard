@@ -4,6 +4,7 @@ import {
   dummyLeaderboard, 
   dummyWorkoutLog
 } from '../data/mockData'
+import useApp from '@/store/useApp'
 
 export default function AddWorkout({userId = '0000'}) { // later control with context or zustand
 
@@ -13,6 +14,11 @@ export default function AddWorkout({userId = '0000'}) { // later control with co
   const [productTotal, setProductTotal] = useState(0)
   const [result, setResult] = useState(null)
 
+  const leaderboardData = useApp((state) => state.leaderboardData)
+  const setLeaderboardData = useApp((state) => state.setLeaderboardData)
+  const workoutLogData = useApp((state) => state.workoutLogData)
+  const setWorkoutLogData = useApp((state) => state.setWorkoutLogData) 
+  
   const categoryDropdownContent = recordCategories.map((item) => {
     return <option key={item} value={item}>{item.split('_').join(' ')}</option>
 })
@@ -38,7 +44,7 @@ const categoryDropdown = (
     // TODO: on click i) add to log; 
     // need current category
     // need total of input at enter
-    let userLog = dummyWorkoutLog.find(element => element.id=== userId)
+    let userLog = workoutLogData.find(element => element.id=== userId)
     let timeCode = "20230716"
     console.log(userLog)
     // if (userLog['log'])
@@ -68,18 +74,21 @@ const categoryDropdown = (
         ]
       })
     }
+    setWorkoutLogData(workoutLogData)
     // ii) compare to pr
-
-    let userPrEntry = dummyLeaderboard.find(element => element.id=== userId)
+    let tempLeaderBoard = leaderboardData
+    let userPrEntry = tempLeaderBoard.find(element => element.id=== userId)
     let userPr = userPrEntry['personal_records'][selectedCategory]
-    if (userPr === null || userPr < result) { // if time then would be min
+    if (userPr === null || userPr < parseFloat(result)) { // if time then would be min
       // pr achieved!
       // alert/congratulate user
-      userPrEntry['personal_records'][selectedCategory] = result
+      userPrEntry['personal_records'][selectedCategory] = parseFloat(result)
+      setLeaderboardData(tempLeaderBoard)
+
 
     }
 
-    console.log(dummyWorkoutLog, dummyLeaderboard)
+    console.log(workoutLogData, leaderboardData)
   }
 
   const headerText = 'text-5xl capitalize font-thin text-gray-500'
