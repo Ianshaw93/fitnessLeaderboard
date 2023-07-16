@@ -1,13 +1,12 @@
 import Navbar from '../components/Navbar'
+import AddWorkout from '../components/AddWorkout'
 
-export default function Workout() {
+
+export default function WorkoutPage() {
     return (
       <>
-      <div  className="min-h-screen bg-[#DED1BF]">
-        Add workout
 
-      </div>
-
+      <AddWorkout />
       <Navbar />
       
       </>
