@@ -6,7 +6,7 @@ const dummyLeaderboard = [
     {
     "id": "0000", 
     "name": "user1",
-    "personal_records": { // should be accessible in both lbs and kgs
+    "personal_records": { 
         "barbell_back_squat": 110,
         "barbell_chest_press": 80,
         "barbell_power_clean": 80
@@ -29,7 +29,7 @@ export default function Leaderboard() {
 
     
     const categoryDropdownContent = recordCategories.map((item) => {
-        return <option key={item} value={item}>{item}</option>
+        return <option key={item} value={item}>{item.split('_').join(' ')}</option>
     })
 
     const categoryDropdown = (
@@ -50,6 +50,19 @@ export default function Leaderboard() {
         setSelectedCategory(event.target.value)
     }
 
+    let sortedLeaderboard = [...dummyLeaderboard].sort((a, b) => {
+        const aValue = a.personal_records[selectedCategory];
+        const bValue = b.personal_records[selectedCategory];
+      
+        // If aValue is null or undefined, always move it down
+        // If bValue is null or undefined, always move it down unless aValue is also null or undefined
+        if (aValue === null || aValue === undefined) return 1;
+        if (bValue === null || bValue === undefined) return -1;
+      
+        // If neither value is null or undefined, compare as normal
+        return bValue - aValue;
+      });
+
 // need to change on dropdown between pr's
     return (
       <>
@@ -59,25 +72,25 @@ export default function Leaderboard() {
       <div  className="min-h-screen bg-[#DED1BF]">
         {/* Title  move to own component or function above*/}
         <div className='grid-cols-3 flex justify-between max-w-full text-2xl font-bold'>
-            <div className='col-span-1 col-start-1 mx-5'>
+            <div className='col-span-1 col-start-1 mx-10'>
                 Rank
             </div>
             <div className='col-span-1 col-start-2 text-left'>
                 Name
             </div>
-            <div className='mx-5'>
+            <div className='mx-10'>
                 Result
             </div>
         </div>
         <ul>
-            {dummyLeaderboard.map((item, index) => {
+            {sortedLeaderboard.map((item, index) => {
                 return (
                     <>
                     <li>
                         <LeaderboardCard 
                             key={item.id}
                             rank={index+1}
-                            name={item.name}
+                            name={item.name} 
                             weightLifted_kg={item.personal_records[selectedCategory]}
 
                         /> 

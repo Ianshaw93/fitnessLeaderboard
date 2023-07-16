@@ -6,7 +6,7 @@ export default function LeaderboardCard({rank=1, name='Ian Shaw', weightLifted_k
     // rank, athlete (image + name); result
     return (
       <>
-      <div className="rounded-xl bg-white px-5 py-1 mb-3 shadow-lg shadow-gray-600 grid grid-cols-3 mx-auto max-w-full">
+      <div className="rounded-xl bg-white px-5 py-1 mb-3 shadow-lg shadow-gray-600 grid grid-cols-3 mx-5 max-w-full">
       
       {/* name bolder full width */}
       <div className="col-span-1 mt-3 text-xl capitalize font-bold">

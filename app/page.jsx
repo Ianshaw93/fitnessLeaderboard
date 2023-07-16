@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import AddWorkout from './components/AddWorkout'
+import Navbar from './components/Navbar'
 import Leaderboard from './components/Leaderboard'
 
 
@@ -10,8 +10,8 @@ import Leaderboard from './components/Leaderboard'
 export default function Home() {
   return (
     <>
-    {/* Test
-    <AddWorkout /> */}
+    {/* Test */}
+    <Navbar />
     <Leaderboard />
     </>
   )
