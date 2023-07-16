@@ -17,3 +17,35 @@ export const dummyLeaderboard = [
         "barbell_power_clean": null
     }        
 }]
+
+export const dummyWorkoutLog = [
+    {
+        "id": "0000",
+        "log": [
+            // // group by date or timecode?
+            // {
+            //     "timeCode": {},
+            //     "entries": [
+            //         {
+            //             "activity": {},
+            //             "result": {},
+            //             "sets": {},
+            //             "reps": {}
+            //             // later include reps and sets
+            //         },
+            //         {
+            //             "activity": {},
+            //             "result": {},
+            //             "sets": {},
+            //             "reps": {}
+            //         },
+            //     ]
+
+            // }
+        ]         
+    },
+    {
+        "id": "0001",
+        "log": []
+    }
+]
