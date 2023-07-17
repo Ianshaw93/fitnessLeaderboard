@@ -4,6 +4,7 @@ import LeaderboardCard from './LeaderboardCard'
 import {dummyLeaderboard} from '../data/mockData'
 
 export default function Leaderboard() {
+    // extract username from here?
 
     const [selectedCategory, setSelectedCategory] = useState("barbell_back_squat")
     const recordCategories = Object.keys(dummyLeaderboard[0]['personal_records'])

@@ -1,20 +1,29 @@
+// 'use client'
 import Image from 'next/image'
 import Navbar from './components/Navbar'
 import Leaderboard from './components/Leaderboard'
 
-import { auth } from '@clerk/nextjs';
 
+import { useUser } from '@clerk/nextjs';
+import useApp from '@/store/useApp';
 
-
-// TODO: home page
-// profile page: pr's and click on lift -> goes to leaderboard for group
-// ability to record workout
 export default function Home() {
-  const { userId } = auth();
+  // const setCurrentUser = useApp((state) => state.setCurrentUser)
+
+  // const { isLoaded, isSignedIn, user } = useUser();
+  // if (!isLoaded || !isSignedIn) {
+  //   return null
+  // } else {
+    
+  //   setCurrentUser({
+  //     "firstName": user.firstName,
+  //     "lastName": user.lastName,
+  //     "id": user.id
+  //   })
+  // }
+  
   return (
     <>
-    {/* Test */}
-    <div>User Id: {userId}</div>
     <Navbar />
     <Leaderboard />
     </>

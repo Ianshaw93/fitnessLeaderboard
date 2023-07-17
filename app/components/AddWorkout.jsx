@@ -6,18 +6,18 @@ import {
 } from '../data/mockData'
 import useApp from '@/store/useApp'
 
-export default function AddWorkout({userId = '0000'}) { // later control with context or zustand
+export default function AddWorkout() { // later control with context or zustand
 
 
   const [selectedCategory, setSelectedCategory] = useState("barbell_back_squat")
   const recordCategories = Object.keys(dummyLeaderboard[0]['personal_records'])
-  const [productTotal, setProductTotal] = useState(0)
   const [result, setResult] = useState(null)
 
   const leaderboardData = useApp((state) => state.leaderboardData)
   const setLeaderboardData = useApp((state) => state.setLeaderboardData)
   const workoutLogData = useApp((state) => state.workoutLogData)
-  const setWorkoutLogData = useApp((state) => state.setWorkoutLogData) 
+  const setWorkoutLogData = useApp((state) => state.setWorkoutLogData)
+  const currentUser = useApp((state) => state.currentUser)
   
   const categoryDropdownContent = recordCategories.map((item) => {
     return <option key={item} value={item}>{item.split('_').join(' ')}</option>
@@ -44,7 +44,11 @@ const categoryDropdown = (
     // TODO: on click i) add to log; 
     // need current category
     // need total of input at enter
-    let userLog = workoutLogData.find(element => element.id=== userId)
+    let userLog = workoutLogData.find(element => element.id=== currentUser.id)
+    // add an entry if not present
+    if (userLog.length === 0) {
+      // add blank entry
+    }
     let timeCode = "20230716"
     console.log(userLog)
     // if (userLog['log'])
