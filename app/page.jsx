@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Navbar from './components/Navbar'
 import Leaderboard from './components/Leaderboard'
+import { UserButton } from '@clerk/nextjs'
 
 
 
@@ -13,6 +14,7 @@ export default function Home() {
     {/* Test */}
     <Navbar />
     <Leaderboard />
+    <UserButton afterSignOutUrl="/"/>
     </>
   )
 }
