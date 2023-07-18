@@ -8,25 +8,20 @@ export default function LeaderboardCard({rank=1, name='Ian Shaw', weightLifted_k
       <>
       <div className="rounded-xl bg-white px-5 py-1 mb-3 shadow-lg shadow-gray-600 grid grid-cols-3 mx-5 max-w-full">
       
-      {/* name bolder full width */}
       <div className="col-span-1 mt-3 text-xl capitalize font-bold">
         {rank}
       </div>
       <div className="col-span-2 flex justify-between max-w-full" >
         <div className='flex items-center'>
 
-            {/* <div className="col-start-2 col-span-1 row-start-1 row-span-1" > */}
             <div className="w-11 rounded-full flex justify-center items-center">
                 <FontAwesomeIcon icon={faCircleUser} size='3x' color='grey'/>
             </div>  
             <h2 className="mx-5 text-xl">{name}</h2>
             {/* </div> */}
         </div>
-        {/* RHS column: price, price/weight below*/}
         <div className="col-start-3 col-span-1 mt-3" >
-        {/* <h2 className="">{name}</h2> */}
           <h2 className="row-span-1 text-2xl text-right font-bold">{weightLifted_kg ? weightLifted_kg + "kg" : "n/a"}</h2>
-          {/* <h2 className="row-span-1">£pricePerKiloRounded/kg</h2> */}
         </div>
       </div>
     </div>
