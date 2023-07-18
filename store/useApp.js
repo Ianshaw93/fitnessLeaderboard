@@ -26,7 +26,7 @@ const useApp = create((set) => {
             set(() => ({
             currentUser: newState
             }))
-
+            // perhaps replace with api call to db?
             set((state) => {
                 let userLog = state.leaderboardData.find(element => element.id=== newState.id)
                 if (!userLog || userLog.length === 0) {
@@ -46,40 +46,6 @@ const useApp = create((set) => {
                 }
             })
         }
-
-        // check if user id already present
-        // setCurrentUser: (newState) => {
-        //     set((state) => {
-        //         currentUser: newState
-        //         // scope if user id already in db; 
-        //         let userLog = state.leaderboardData.find(element => element.id=== newState.id) 
-                
-        //         if (userLog.length > 0)  return {
-        //         // if not create blank entry
-
-        //             leaderboardData: [...state.leaderboardData,
-        //                 {
-        //                     "id": newState.id, 
-        //                     "name": `${newState.firstName} ${newState.lastName}`,
-        //                     // later map through exercises
-        //                     "personal_records": { 
-        //                         "barbell_back_squat": null,
-        //                         "barbell_chest_press": null,
-        //                         "barbell_power_clean": null
-        //                     }
-        //                 }
-        //             ] 
-        //         }
-
-        //     }
-                
-
-            
-        // return
-        // {
-        //     currentUser: newState
-        // }
-        // })}
     }
 })
 

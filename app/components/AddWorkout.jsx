@@ -44,13 +44,22 @@ const categoryDropdown = (
     // TODO: on click i) add to log; 
     // need current category
     // need total of input at enter
-    let userLog = workoutLogData.find(element => element.id=== currentUser.id)
+    console.log("leaderboardData data: ", leaderboardData)
+    console.log("current user id: ", currentUser)
+    // user_2Sf9kBd0GnJCj2VgBcGqOcWB8p6
+    let userLog = workoutLogData.find(element => element.id=== currentUser.id) // returns undefined
     // add an entry if not present
-    if (userLog.length === 0) {
+    if (!userLog) {
       // add blank entry
+      workoutLogData.push({
+        "id": currentUser.id,
+        "log": []
+      })
+      userLog = workoutLogData.find(element => element.id=== currentUser.id)
     }
     let timeCode = "20230716"
     console.log(userLog)
+    console.log("workoutLogData data: ", workoutLogData)
     // if (userLog['log'])
     let currentLog = userLog['log'].find(element => element["timeCode"]=== timeCode)
     if (currentLog && currentLog['entries'] && currentLog['entries'].length > 0) {
