@@ -90,7 +90,7 @@ const categoryDropdown = (
     setWorkoutLogData(workoutLogData)
     // ii) compare to pr
     let tempLeaderBoard = leaderboardData
-    let userPrEntry = tempLeaderBoard.find(element => element.id=== userId)
+    let userPrEntry = tempLeaderBoard.find(element => element.id=== currentUser.id)
     let userPr = userPrEntry['personal_records'][selectedCategory]
     if (userPr === null || userPr < parseFloat(result)) { // if time then would be min
       // pr achieved!
