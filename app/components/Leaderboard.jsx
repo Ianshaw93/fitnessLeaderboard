@@ -2,9 +2,11 @@
 import { useState } from 'react'
 import LeaderboardCard from './LeaderboardCard'
 import {dummyLeaderboard} from '../data/mockData'
+import useApp from '@/store/useApp'
 
 export default function Leaderboard() {
     // extract username from here?
+    const leaderboardData = useApp((state) => state.leaderboardData)
 
     const [selectedCategory, setSelectedCategory] = useState("barbell_back_squat")
     const recordCategories = Object.keys(dummyLeaderboard[0]['personal_records'])
@@ -31,7 +33,7 @@ export default function Leaderboard() {
         setSelectedCategory(event.target.value)
     }
 
-    let sortedLeaderboard = [...dummyLeaderboard].sort((a, b) => {
+    let sortedLeaderboard = [...leaderboardData].sort((a, b) => {
         const aValue = a.personal_records[selectedCategory];
         const bValue = b.personal_records[selectedCategory];
       
