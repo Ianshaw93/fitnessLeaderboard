@@ -1,17 +1,24 @@
-import Image from 'next/image'
 import Navbar from './components/Navbar'
 import Leaderboard from './components/Leaderboard'
-import { UserButton } from '@clerk/nextjs'
+import StoreUser from './components/StoreUser'
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
 
-
-// TODO: home page
-// profile page: pr's and click on lift -> goes to leaderboard for group
-// ability to record workout
 export default function Home() {
+  
   return (
     <>
-    {/* Test */}
+    <SignedIn>
+      <UserButton />
+      <StoreUser />
+    </SignedIn>
+    <SignedOut>
+      <SignInButton mode='modal'>
+        <button>
+          Sign In
+        </button>
+      </SignInButton>
+    </SignedOut>
     <Navbar />
     <Leaderboard />
     <UserButton afterSignOutUrl="/"/>

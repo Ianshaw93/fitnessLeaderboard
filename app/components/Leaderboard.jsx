@@ -2,12 +2,14 @@
 import { useState } from 'react'
 import LeaderboardCard from './LeaderboardCard'
 import {dummyLeaderboard} from '../data/mockData'
+import useApp from '@/store/useApp'
 
 export default function Leaderboard() {
+    // extract username from here?
+    const leaderboardData = useApp((state) => state.leaderboardData)
 
     const [selectedCategory, setSelectedCategory] = useState("barbell_back_squat")
     const recordCategories = Object.keys(dummyLeaderboard[0]['personal_records'])
-
     
     const categoryDropdownContent = recordCategories.map((item) => {
         return <option key={item} value={item}>{item.split('_').join(' ')}</option>
@@ -31,7 +33,7 @@ export default function Leaderboard() {
         setSelectedCategory(event.target.value)
     }
 
-    let sortedLeaderboard = [...dummyLeaderboard].sort((a, b) => {
+    let sortedLeaderboard = [...leaderboardData].sort((a, b) => {
         const aValue = a.personal_records[selectedCategory];
         const bValue = b.personal_records[selectedCategory];
       
@@ -54,7 +56,7 @@ export default function Leaderboard() {
         {/* Title  move to own component or function above*/}
         <div className='grid-cols-3 flex justify-between max-w-full text-2xl font-bold'>
             <div className='col-span-1 col-start-1 mx-10'>
-                Rank
+                Rank 
             </div>
             <div className='col-span-1 col-start-2 text-left'>
                 Name
@@ -67,7 +69,7 @@ export default function Leaderboard() {
             {sortedLeaderboard.map((item, index) => {
                 return (
                     <>
-                    <li>
+                    <li key={item.name}>
                         <LeaderboardCard 
                             key={item.id}
                             rank={index+1}
