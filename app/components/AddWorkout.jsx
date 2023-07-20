@@ -7,7 +7,7 @@ import {
 import useApp from '@/store/useApp'
 import { useUser } from '@clerk/nextjs';
 
-export default function AddWorkout() { // later control with context or zustand
+export default function AddWorkout() { 
 
   const { isLoaded, isSignedIn, user } = useUser();
   const [selectedCategory, setSelectedCategory] = useState("barbell_back_squat")
