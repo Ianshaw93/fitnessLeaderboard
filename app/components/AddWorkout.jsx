@@ -43,6 +43,7 @@ const categoryDropdown = (
 
   function handleClick(event) {
     if (isLoaded && isSignedIn) {
+      
       // TODO: on click i) add to log; 
       // need current category
       // need total of input at enter
