@@ -2,7 +2,6 @@ import { connect } from "@planetscale/database";
 import { config } from '@/db/config'
 import { drizzle } from "drizzle-orm/planetscale-serverless";
 import { exercises, users } from "@/drizzle/schema";
-import { eq } from 'drizzle-orm'
 import { User } from "@/types";
 
 export async function getAllUsers(): Promise<User[]> {

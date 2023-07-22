@@ -5,11 +5,7 @@ import { sql } from "drizzle-orm"
 export const exercises = mysqlTable("Exercises", {
 	exerciseId: int("ExerciseID").autoincrement().primaryKey().notNull(),
 	name: varchar("Name", { length: 100 }).notNull(),
-	notes: text("Notes"),
-	result: decimal("Result", { precision: 10, scale: 2 }),
-	reps: int("Reps"),
-	sets: int("Sets"),
-	rest: varchar("Rest", { length: 255 }),
+	description: text("Description"),
 });
 
 export const groupMembers = mysqlTable("GroupMembers", {
