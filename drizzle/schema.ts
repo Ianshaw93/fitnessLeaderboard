@@ -4,8 +4,12 @@ import { sql } from "drizzle-orm"
 
 export const exercises = mysqlTable("Exercises", {
 	exerciseId: int("ExerciseID").autoincrement().primaryKey().notNull(),
-	description: text("Description"),
 	name: varchar("Name", { length: 100 }).notNull(),
+	notes: text("Notes"),
+	result: decimal("Result", { precision: 10, scale: 2 }),
+	reps: int("Reps"),
+	sets: int("Sets"),
+	rest: varchar("Rest", { length: 255 }),
 });
 
 export const groupMembers = mysqlTable("GroupMembers", {
@@ -25,19 +29,27 @@ export const groups = mysqlTable("Groups", {
 	description: varchar("Description", { length: 255 }),
 });
 
-// workoutExercise
-
+export const workoutExercises = mysqlTable("WorkoutExercises", {
+	workoutId: int("WorkoutID").notNull(),
+	exerciseId: int("ExerciseID").notNull(),
+	name: varchar("Name", { length: 100 }).notNull(),
+	notes: text("Notes"),
+	result: decimal("Result", { precision: 10, scale: 2 }),
+	reps: int("Reps"),
+	sets: int("Sets"),
+	rest: varchar("Rest", { length: 255 }),
+},
+(table) => {
+	return {
+		workoutExercisesExerciseIdWorkoutId: primaryKey(table.exerciseId, table.workoutId)
+	}
+});
 
 export const workouts = mysqlTable("Workouts", {
 	workoutId: int("WorkoutID").autoincrement().primaryKey().notNull(),
 	userId: char("UserID", { length: 50 }),
 	// you can use { mode: 'date' }, if you want to have Date as type for this column
 	date: date("Date", { mode: 'string' }),
-	notes: text("Notes"),
-	result: decimal("Result", { precision: 10, scale: 2 }),
-	reps: int("Reps"),
-	sets: int("Sets"),
-	rest: varchar("Rest", { length: 255 }),
 });
 
 export const users = mysqlTable("users", {
