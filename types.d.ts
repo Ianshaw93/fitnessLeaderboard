@@ -4,6 +4,12 @@ export type User = {
     surname: string
 }
 
+export type AuthUser = {
+    id: string
+    firstName: string
+    lastName: string
+}
+
 export type Exercise = {
     exerciseId: Number
     name: string

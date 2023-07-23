@@ -26,7 +26,8 @@ function userExists(users: User[], userId:string) {
 export async function addUser(firstName: string,surname: string, userId: string) {
   const conn = connect(config)
   const db = drizzle(conn)
-
+  
+  console.log("addUser func")
   const results: User[] = await db.select({
     userId: users.userId,
     firstName: users.firstName,
@@ -49,7 +50,8 @@ export async function addUser(firstName: string,surname: string, userId: string)
       return err;
     })
   } else{
-    return console.log("user alrady in db")
+    console.log("user alrady in db")
+    return 
     // returning user flow
   }
 
