@@ -4,12 +4,13 @@ import LeaderboardCard from './LeaderboardCard'
 import {dummyLeaderboard} from '../data/mockData'
 import useApp from '@/store/useApp'
 
-export default function Leaderboard() {
+// needs to pass in db data from server component
+export default function Leaderboard({exercises}) {
     // extract username from here?
     const leaderboardData = useApp((state) => state.leaderboardData)
 
-    const [selectedCategory, setSelectedCategory] = useState("barbell_back_squat")
-    const recordCategories = Object.keys(dummyLeaderboard[0]['personal_records'])
+    const [selectedCategory, setSelectedCategory] = useState(exercises[0]["name"]) // should be exercises appearing in data only
+    const recordCategories = exercises.map((item) => item.name)//Object.keys(dummyLeaderboard[0]['personal_records'])
     
     const categoryDropdownContent = recordCategories.map((item) => {
         return <option key={item} value={item}>{item.split('_').join(' ')}</option>

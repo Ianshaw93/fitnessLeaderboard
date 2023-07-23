@@ -1,4 +1,5 @@
 import { addUser } from "@/lib/getUser";
+import { getAllExercises } from "@/lib/getWorkout";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -14,4 +15,10 @@ export async function POST(request: Request) {
         status: 201,
         result: response,
     })
+}
+
+
+export async function GET(request: Request) {
+    const exercises = await getAllExercises() 
+    return NextResponse.json(exercises)
 }

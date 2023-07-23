@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Leaderboard from './components/Leaderboard'
 // import StoreUser from './components/StoreUser'
 import { addUser } from "@/lib/getUser";
+import { getAllExercises } from "@/lib/getWorkout";
 import { SignInButton, SignedIn, SignedOut, UserButton, currentUser } from '@clerk/nextjs'
 import { AuthUser, User } from '@/types';
 
@@ -12,6 +13,8 @@ export default async function Home() {
   const user:AuthUser = await currentUser();
   console.log("user: ", user.id, user.firstName, user.lastName)
   addUser(user.id, user.firstName, user.lastName)
+  const exercises = await getAllExercises()
+  // TODO: pull in exercises from db etc -> send in via props to leaderboard
   
   return (
     <>
@@ -27,7 +30,7 @@ export default async function Home() {
       </SignInButton>
     </SignedOut>
     <Navbar />
-    <Leaderboard />
+    <Leaderboard exercises={exercises}/>
     </>
   )
 }
