@@ -48,15 +48,15 @@ export const workouts = mysqlTable("Workouts", {
 	date: date("Date", { mode: 'string' }),
 });
 
-export const a32C656B1F185931Bdb912Bebf0569Bf20230723133911Vrepl = mysqlTable("_a32c656b_1f18_5931_bdb9_12bebf0569bf_20230723133911_vrepl", {
-	exerciseId: int("ExerciseID").autoincrement().primaryKey().notNull(),
-	name: varchar("Name", { length: 100 }).notNull(),
-	notes: text("Notes"),
-	result: decimal("Result", { precision: 10, scale: 2 }),
-	reps: int("Reps"),
-	sets: int("Sets"),
-	rest: varchar("Rest", { length: 255 }),
-});
+// export const a32C656B1F185931Bdb912Bebf0569Bf20230723133911Vrepl = mysqlTable("_a32c656b_1f18_5931_bdb9_12bebf0569bf_20230723133911_vrepl", {
+// 	exerciseId: int("ExerciseID").autoincrement().primaryKey().notNull(),
+// 	name: varchar("Name", { length: 100 }).notNull(),
+// 	notes: text("Notes"),
+// 	result: decimal("Result", { precision: 10, scale: 2 }),
+// 	reps: int("Reps"),
+// 	sets: int("Sets"),
+// 	rest: varchar("Rest", { length: 255 }),
+// });
 
 export const users = mysqlTable("users", {
 	userId: char("user_id", { length: 50 }).primaryKey().notNull(),

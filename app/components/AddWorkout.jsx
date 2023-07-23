@@ -8,7 +8,7 @@ import useApp from '@/store/useApp'
 import { useUser } from '@clerk/nextjs';
 
 export default function AddWorkout() { // later control with context or zustand
-
+  // either store users etc on zustand or download fresh each time and this be a serverside component
   const { isLoaded, isSignedIn, user } = useUser();
   const [selectedCategory, setSelectedCategory] = useState("barbell_back_squat")
   const recordCategories = Object.keys(dummyLeaderboard[0]['personal_records'])

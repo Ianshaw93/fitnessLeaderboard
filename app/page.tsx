@@ -14,7 +14,7 @@ export default async function Home() {
   console.log("user: ", user.id, user.firstName, user.lastName)
   addUser(user.id, user.firstName, user.lastName)
   const exercises = await getAllExercises()
-  // TODO: pull in exercises from db etc -> send in via props to leaderboard
+  // TODO: add workoutExercise from db etc -> send in via props to leaderboard
   
   return (
     <>
