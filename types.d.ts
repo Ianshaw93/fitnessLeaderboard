@@ -23,12 +23,18 @@ export type Exercise = {
 
 export type WorkoutExercise = {
     workoutId: number
-    exerciseId: Number
+    exerciseId: number
+    name: string
     notes: string
-    result: Number
-    // below should be removed??
+    result: string
     reps: Number
     sets: Number
-    rest: Number
+    rest: string
+}
+
+export type Workout = {
+    workoutId: string
+    userId: string
+    date: date
 }
 // userId, lastName

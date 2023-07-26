@@ -26,6 +26,7 @@ export const groups = mysqlTable("Groups", {
 });
 
 export const workoutExercises = mysqlTable("WorkoutExercises", {
+	// should have a workoutExerciseId too!
 	workoutId: int("WorkoutID").notNull(),
 	exerciseId: int("ExerciseID").notNull(),
 	name: varchar("Name", { length: 100 }).notNull(),

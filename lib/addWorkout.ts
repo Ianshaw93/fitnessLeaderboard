@@ -2,20 +2,42 @@ import { connect } from "@planetscale/database";
 import { config } from '@/db/config'
 import { drizzle } from "drizzle-orm/planetscale-serverless";
 import { workouts } from "@/drizzle/schema";
+import { Workout } from "@/types";
+import getCurrentDate from "./getDate";
 
-export async function addWorkout(userId: string) { 
-// check if workout there already?
+// TODO: call from AddWorkout i.e. add exercise component
+export async function addWorkout(userId: string): Promise<Workout> { 
+
     const conn = connect(config)
     const db = drizzle(conn)
-    await db.insert(workouts).values({
+    const date = getCurrentDate()
+
+    const newWorkout = {
         userId,
-        // date, // is date needed to be sent?
-      }).then((result)=> {
+        date
+    };
+
+
+    try {
+        const result = await db.insert(workouts).values(newWorkout);
         console.log({result});
-        return result;
-      }).catch((err) => {
-        console.log(err)
-        return err;
-      })
-     
+
+        return {
+            userId,
+            date,
+            workoutId: result.insertId // replace with correct path if it's different
+        };
+    } catch (err) {
+        console.error(err);
+        throw err; // This will cause the returned Promise to be rejected
+    }
+
+
 }
+
+
+
+
+
+
+
