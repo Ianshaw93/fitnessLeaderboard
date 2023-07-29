@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1689960737862,
+      "tag": "0000_ancient_ikaris",
+      "breakpoints": true
+    }
+  ]
+}
