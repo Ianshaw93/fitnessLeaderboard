@@ -29,6 +29,12 @@ export default function AddWorkout({exercises}) { // later control with context 
   const [ workoutAdded, setWorkoutAdded] = useState(false)
   const [ currentWorkoutId, setCurrentWorkoutId] = useState(null)
 
+  function filterExercisesByName(name) {
+    return exercises
+      .filter(exercise => exercise.name === name)
+      .map(exercise => exercise.exerciseId);
+  }
+
   // run async function througn axios call
   const actionAddWorkout = async (userId) => {
     // needs to return workout id!!
@@ -49,12 +55,27 @@ export default function AddWorkout({exercises}) { // later control with context 
         // console.log("addWorkout response: ", response)
         setWorkoutAdded(true);
         setCurrentWorkoutId(response.result.workoutId)
-        actionAddWorkoutExercise(response.result.workoutId)
+        actionAddWorkoutExercise(
+          response.result.workoutId,
+          selectedCategory,
+          "notes",
+          parseFloat(result).toFixed(2),
+          1,
+          1,
+          "n/a"
+          )
         // var currentWorkoutId = response.workoutId
       } else {
         console.error('Workout added already: ')
-        actionAddWorkoutExercise(currentWorkoutId)
-        // response.workoutId(currentWorkoutId)
+        actionAddWorkoutExercise(
+          currentWorkoutId,
+          selectedCategory,
+          "notes",
+          parseFloat(result).toFixed(2),
+          1,
+          1,
+          "n/a"
+          )
       }
       
     } catch (error) {
@@ -63,8 +84,9 @@ export default function AddWorkout({exercises}) { // later control with context 
 
   };  
 
-  const actionAddWorkoutExercise = async (currentWorkoutId, exerciseId, name, notes, result, reps, sets, rest) => {
+  const actionAddWorkoutExercise = async (currentWorkoutId, name, notes, result, reps, sets, rest) => {
     console.log("currentWorkoutId", currentWorkoutId)
+    let exerciseId = filterExercisesByName(name)
     console.log("head of workoutExercises fetch call", workoutAdded, JSON.stringify({
       currentWorkoutId,
   }))
