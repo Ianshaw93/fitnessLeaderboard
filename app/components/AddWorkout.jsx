@@ -9,11 +9,12 @@ import { useUser } from '@clerk/nextjs';
 // import axios from 'axios'
 import { addWorkout } from '@/lib/addWorkout';
 
-export default function AddWorkout() { // later control with context or zustand
+// TODO: get exerciseIds for each exercise
+export default function AddWorkout({exercises}) { // later control with context or zustand
   // either store users etc on zustand or download fresh each time and this be a serverside component
   const { isLoaded, isSignedIn, user } = useUser();
-  const [selectedCategory, setSelectedCategory] = useState("barbell_back_squat")
-  const recordCategories = Object.keys(dummyLeaderboard[0]['personal_records'])
+  const [selectedCategory, setSelectedCategory] = useState(exercises[0]["name"])
+  const recordCategories = exercises.map((item) => item.name)
   const [result, setResult] = useState(null)
 
   const leaderboardData = useApp((state) => state.leaderboardData)
@@ -62,7 +63,7 @@ export default function AddWorkout() { // later control with context or zustand
 
   };  
 
-  const actionAddWorkoutExercise = async (currentWorkoutId) => {
+  const actionAddWorkoutExercise = async (currentWorkoutId, exerciseId, name, notes, result, reps, sets, rest) => {
     console.log("currentWorkoutId", currentWorkoutId)
     console.log("head of workoutExercises fetch call", workoutAdded, JSON.stringify({
       currentWorkoutId,
@@ -76,7 +77,15 @@ export default function AddWorkout() { // later control with context or zustand
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({
-                currentWorkoutId
+                currentWorkoutId,
+                exerciseId,// need to get from category chosen!!
+                name,
+                notes,
+                result, // get userEntered number
+                reps,
+                sets,
+                rest
+
               })
             });
             const response = await res.json();

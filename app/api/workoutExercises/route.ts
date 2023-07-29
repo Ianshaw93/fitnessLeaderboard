@@ -35,17 +35,18 @@ export async function getAllWorkoutExercises(): Promise<WorkoutExercise[]> {
 export async function POST(request: Request) {
     const conn = connect(config)
     const db = drizzle(conn)
-    console.log((await request))
-    console.log((await request.json()))
+    // console.log((await request))
     const req = await request.json()
+    console.log(req)
     let workoutId = req.currentWorkoutId
-    let exerciseId = 559
-    let name = "test"
-    let notes = "test"
-    let result = "100.00"
-    let reps = 1
-    let sets = 1
-    let rest = "n/a"    // add workout here
+    let exerciseId = req.exerciseId
+    // all below changin
+    let name = req.name
+    let notes = req.notes
+    let result = req.result
+    let reps = req.reps
+    let sets = req.sets
+    let rest = req.rest    // add workout here
 
     const newWorkoutExercise = {
         workoutId,
