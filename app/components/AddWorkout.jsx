@@ -134,73 +134,12 @@ const categoryDropdown = (
 
   function handleClick(event) {
     if (isLoaded && isSignedIn) {
-      
-      // TODO: on click i) add to log; 
-      // need current category
-      // need total of input at enter
+
       console.log("leaderboardData data: ", leaderboardData)
       console.log("current user id: ", user)
       // user_2Sf9kBd0GnJCj2VgBcGqOcWB8p6
       // check if new workouts
       actionAddWorkout(user.id)
-      // actionAddWorkoutExercise()
-
-
-      // let userLog = workoutLogData.find(element => element.id=== user.id) // returns undefined
-      // // add an entry if not present
-      // if (!userLog) {
-      //   // add blank entry
-      //   workoutLogData.push({
-      //     "id": user.id,
-      //     "log": []
-      //   })
-      //   userLog = workoutLogData.find(element => element.id=== user.id)
-      // }
-      // let timeCode = "20230716"
-      // console.log(userLog)
-      // console.log("workoutLogData data: ", workoutLogData)
-      // // if (userLog['log'])
-      // let currentLog = userLog['log'].find(element => element["timeCode"]=== timeCode)
-      // if (currentLog && currentLog['entries'] && currentLog['entries'].length > 0) {
-      //   // if one log for this day exists
-      //   currentLog['entries'].push(
-      //     {
-      //       "activity": selectedCategory,
-      //       "result": result,
-      //       "sets": 1,
-      //       "reps": 1          
-      //     }        
-      //   )
-      // } else {
-      //   // if no entry for today exists
-  
-      //   userLog['log'].push({
-      //     "timeCode": timeCode,
-      //     "entries": [
-      //       {
-      //         "activity": selectedCategory,
-      //         "result": result,
-      //         "sets": 1,
-      //         "reps": 1          
-      //       }
-      //     ]
-      //   })
-      // }
-      // setWorkoutLogData(workoutLogData)
-      // // ii) compare to pr
-      // let tempLeaderBoard = leaderboardData
-      // let userPrEntry = tempLeaderBoard.find(element => element.id=== user.id)
-      // let userPr = userPrEntry['personal_records'][selectedCategory]
-      // if (userPr === null || userPr < parseFloat(result)) { // if time then would be min
-      //   // pr achieved!
-      //   // alert/congratulate user
-      //   userPrEntry['personal_records'][selectedCategory] = parseFloat(result)
-      //   setLeaderboardData(tempLeaderBoard)
-  
-  
-      // }
-  
-      // console.log(workoutLogData, leaderboardData)
 
     }
   }

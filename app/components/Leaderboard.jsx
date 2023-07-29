@@ -1,11 +1,11 @@
 "use client"
 import { useState } from 'react'
 import LeaderboardCard from './LeaderboardCard'
-import {dummyLeaderboard} from '../data/mockData'
 import useApp from '@/store/useApp'
 
 // needs to pass in db data from server component
-export default function Leaderboard({exercises}) {
+// TODO: use workoutExercise data only; add sql dummy data
+export default function Leaderboard({exercises, allWorkoutExercises}) {
     // extract username from here?
     const leaderboardData = useApp((state) => state.leaderboardData)
 
