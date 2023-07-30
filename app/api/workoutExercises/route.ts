@@ -5,7 +5,7 @@ import { drizzle } from "drizzle-orm/planetscale-serverless";
 import { workoutExercises } from "@/drizzle/schema";
 import { WorkoutExercise } from "@/types";
 
-export async function getAllWorkoutExercises(): Promise<WorkoutExercise[]> {
+export async function GET(): Promise<WorkoutExercise[]> {
     const conn = connect(config)
     const db = drizzle(conn)
   
