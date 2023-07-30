@@ -3,10 +3,8 @@ import Navbar from './components/Navbar'
 import Leaderboard from './components/Leaderboard'
 // import StoreUser from './components/StoreUser'
 import { addUser } from "@/lib/getUser";
-import { getAllExercises } from "@/lib/getWorkout";
 import { SignInButton, SignedIn, SignedOut, UserButton, currentUser } from '@clerk/nextjs'
-import { AuthUser, User } from '@/types';
-import { getAllWorkoutExercises } from '@/lib/addWorkoutExercise';
+import { AuthUser } from '@/types';
 import { getAllPRs } from '@/lib/getAllPRs';
 
 
@@ -30,11 +28,11 @@ export default async function Home() {
     </SignedIn>
     <SignedOut>
       <SignInButton mode='modal'>
-        <button>
-          Sign In
+        <button className='bg-[#d4af37] rounded font-bold py-2 px-4'>
+        Sign In
         </button>
-      </SignInButton>
-    </SignedOut>
+        </SignInButton>
+      </SignedOut>
     <Navbar />
     <Leaderboard 
       allPRs={allPRs}
