@@ -1,16 +1,22 @@
 "use client"
 import { useState } from 'react'
 import LeaderboardCard from './LeaderboardCard'
-import {dummyLeaderboard} from '../data/mockData'
 import useApp from '@/store/useApp'
 
 // needs to pass in db data from server component
-export default function Leaderboard({exercises}) {
-    // extract username from here?
-    const leaderboardData = useApp((state) => state.leaderboardData)
+// TODO: use workoutExercise data only; add sql dummy data; filter by user
+// done - send pr data in
+// done: use pr exercises as categories
+// TODO: use prData for leaderboard data
 
-    const [selectedCategory, setSelectedCategory] = useState(exercises[0]["name"]) // should be exercises appearing in data only
-    const recordCategories = exercises.map((item) => item.name)//Object.keys(dummyLeaderboard[0]['personal_records'])
+// need to get 
+export default function Leaderboard({allPRs}) {
+    // extract username from here?
+    console.log("allprs: ", allPRs)
+    // const leaderboardData = useApp((state) => state.leaderboardData)
+
+    const [selectedCategory, setSelectedCategory] = useState(allPRs[0]["exerciseName"]) 
+    const recordCategories = allPRs.map((item) => item.exerciseName)
     
     const categoryDropdownContent = recordCategories.map((item) => {
         return <option key={item} value={item}>{item.split('_').join(' ')}</option>
@@ -34,18 +40,33 @@ export default function Leaderboard({exercises}) {
         setSelectedCategory(event.target.value)
     }
 
-    let sortedLeaderboard = [...leaderboardData].sort((a, b) => {
-        const aValue = a.personal_records[selectedCategory];
-        const bValue = b.personal_records[selectedCategory];
+
+    let sortedLeaderboard = allPRs.filter(pr => pr.exerciseName === selectedCategory)
+    sortedLeaderboard.sort((a, b) => {
+            const aValue = parseFloat(a.maxResult);
+            const bValue = parseFloat(b.maxResult);
+          
+            // If aValue is null or undefined, always move it down
+            // If bValue is null or undefined, always move it down unless aValue is also null or undefined
+            if (aValue === null || aValue === undefined) return 1;
+            if (bValue === null || bValue === undefined) return -1;
+          
+            // If neither value is null or undefined, compare as normal
+            return bValue - aValue;
+          });
+
+    // let sortedLeaderboard = [...allPRs].sort((a, b) => {
+    //     const aValue = a.personal_records[selectedCategory];
+    //     const bValue = b.personal_records[selectedCategory];
       
-        // If aValue is null or undefined, always move it down
-        // If bValue is null or undefined, always move it down unless aValue is also null or undefined
-        if (aValue === null || aValue === undefined) return 1;
-        if (bValue === null || bValue === undefined) return -1;
+    //     // If aValue is null or undefined, always move it down
+    //     // If bValue is null or undefined, always move it down unless aValue is also null or undefined
+    //     if (aValue === null || aValue === undefined) return 1;
+    //     if (bValue === null || bValue === undefined) return -1;
       
-        // If neither value is null or undefined, compare as normal
-        return bValue - aValue;
-      });
+    //     // If neither value is null or undefined, compare as normal
+    //     return bValue - aValue;
+    //   });
 
 // need to change on dropdown between pr's
     return (
@@ -75,7 +96,7 @@ export default function Leaderboard({exercises}) {
                             key={item.id}
                             rank={index+1}
                             name={item.name} 
-                            weightLifted_kg={item.personal_records[selectedCategory]}
+                            weightLifted_kg={item.maxResult}
 
                         /> 
 

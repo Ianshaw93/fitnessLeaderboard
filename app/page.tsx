@@ -6,6 +6,8 @@ import { addUser } from "@/lib/getUser";
 import { getAllExercises } from "@/lib/getWorkout";
 import { SignInButton, SignedIn, SignedOut, UserButton, currentUser } from '@clerk/nextjs'
 import { AuthUser, User } from '@/types';
+import { getAllWorkoutExercises } from '@/lib/addWorkoutExercise';
+import { getAllPRs } from '@/lib/getAllPRs';
 
 
 export default async function Home() {
@@ -16,7 +18,7 @@ export default async function Home() {
 
     addUser(user.id, user.firstName, user.lastName)
   }
-  const exercises = await getAllExercises()
+  const allPRs = await getAllPRs()
   // pass userDetails down to client components?
   // TODO: add workoutExercise from db etc -> send in via props to leaderboard
   
@@ -34,7 +36,9 @@ export default async function Home() {
       </SignInButton>
     </SignedOut>
     <Navbar />
-    <Leaderboard exercises={exercises}/>
+    <Leaderboard 
+      allPRs={allPRs}
+    />
     </>
   )
 }

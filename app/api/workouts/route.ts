@@ -18,11 +18,14 @@ export async function POST(request: Request) {
     const conn = connect(config)
     const db = drizzle(conn)
     const date = getCurrentDate()
-    console.log((request.json()))
+    // console.log((request.json()))
     // add workout here
     // call api from frontend
-    const user = await currentUser();
-    let userId = user['userId']
+    // const user = await currentUser();
+    // let userId = user['userId']
+    const req = await request.json()
+    let userId = req.userId
+
     const newWorkout = {
         userId,
         date
