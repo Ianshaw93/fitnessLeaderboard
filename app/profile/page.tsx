@@ -3,7 +3,6 @@ import { UserButton, currentUser } from "@clerk/nextjs";
 import LeaderboardCard from "../components/LeaderboardCard";
 import { AuthUser, PR } from "@/types";
 import Navbar from "../components/Navbar";
-import { ProfileImage } from "../components/ProfileImage";
 
 export default async function ProfilePage() {
   // TODO: profile image
