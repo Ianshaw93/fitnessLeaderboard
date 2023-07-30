@@ -119,7 +119,7 @@ const categoryDropdown = (
         onChange={handleInput}
         name='selectedCategory'
         value={selectedCategory || ""}
-        className="w-9/12 text-center border p-2 mx-2 my-2"
+        className="w-30 text-center border p-2 mx-2 my-2"
         >
           { categoryDropdownContent }
         </select>
@@ -147,20 +147,16 @@ const categoryDropdown = (
     return (
       <>
         <div  className="min-h-screen bg-[#DED1BF]">
-          <div className='col-span-2 mt-3 py-2 text-2xl capitalize font-thin text-gray-500'>
-
-            <span className={headerText}>
+            <div className={headerText}>
 
               Add Activity:
-            </span>
-            <div className="rounded-xl bg-white px-5 py-1 mb-3 shadow-lg shadow-gray-600 grid mx-auto max-w-full">
-              <div className='grid grid-cols-2 gap-4'>
-                <span className={`justify-self-end ${subHeaderText}`}>
-                  Activity: 
-                </span>
-                <div className="justify-self-start form-control w-100" >
+            </div>
+          <div className='col-span-2 mt-3 py-2 px-5 text-2xl capitalize font-thin text-gray-500'>
+
+            <div className="rounded-xl bg-white px-20 py-1 mb-3 shadow-lg shadow-gray-600 grid mx-auto">
+              <div className='grid grid-cols-1 gap-4'>
                     {categoryDropdown}
-                </div>
+
               </div>
               <div className='grid grid-cols-2 gap-4'>
 
@@ -168,11 +164,11 @@ const categoryDropdown = (
                   {/* later result */}
                   Weight:
                   </label>
-                <div className='flex items-center gap-2'>
+                <div className='px-5 flex items-center gap-2'>
 
                 <input 
                 type="text" 
-                className="w-64 border border-gray-300 px-3 py-2 rounded-md mb-4"  
+                className="w-24 border border-gray-300 px-3 py-2 rounded-md mb-4"  
                 value={result ? result : ""}
                 onChange={(e) => {
                   setResult(e.target.value)
