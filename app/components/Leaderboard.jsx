@@ -28,7 +28,7 @@ export default function Leaderboard({allPRs}) {
             onChange={handleInput}
             name='selectedCategory'
             value={selectedCategory || ""}
-            className="w-9/12 text-center border p-2 mx-2 my-2"
+            className="w-9/12 text-center border p-2 mx-2 my-2 text-black"
             >
               { categoryDropdownContent }
             </select>
@@ -76,7 +76,7 @@ export default function Leaderboard({allPRs}) {
         </div>
       <div  className="min-h-screen bg-[#DED1BF]">
         {/* Title  move to own component or function above*/}
-        <div className='grid-cols-3 flex justify-between max-w-full text-2xl font-bold'>
+        <div className='grid-cols-3 flex justify-between max-w-full text-2xl font-bold text-black'>
             <div className='col-span-1 col-start-1 mx-10'>
                 Rank 
             </div>
