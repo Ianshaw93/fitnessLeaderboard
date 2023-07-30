@@ -50,7 +50,7 @@ export async function addUser(firstName: string,surname: string, userId: string)
       return err;
     })
   } else{
-    console.log("user alrady in db")
+    console.log("user already in db")
     return 
     // returning user flow
   }

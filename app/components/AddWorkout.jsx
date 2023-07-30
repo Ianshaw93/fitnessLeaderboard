@@ -1,9 +1,6 @@
 'use client'
 import { useState } from 'react'
-import {
-  dummyLeaderboard, 
-  dummyWorkoutLog
-} from '../data/mockData'
+
 import useApp from '@/store/useApp'
 import { useUser } from '@clerk/nextjs';
 // import axios from 'axios'
@@ -38,6 +35,7 @@ export default function AddWorkout({exercises}) { // later control with context 
   // run async function througn axios call
   const actionAddWorkout = async (userId) => {
     // needs to return workout id!!
+    console.log("uID addWorkout: ", userId)
     try {
       if (!workoutAdded) {
         const res = await fetch('http://localhost:3000/api/workouts',{

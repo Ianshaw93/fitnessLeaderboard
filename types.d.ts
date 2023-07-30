@@ -38,3 +38,12 @@ export type Workout = {
     date: date
 }
 // userId, lastName
+
+export type PR = {
+    userId: string
+    firstName: string
+    surname: string
+    exerciseId: number
+    exerciseName: string
+    maxResult: string
+}
