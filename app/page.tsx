@@ -18,7 +18,6 @@ export default async function Home() {
 
     addUser(user.id, user.firstName, user.lastName)
   }
-  const exercises = await getAllExercises()
   const allPRs = await getAllPRs()
   // pass userDetails down to client components?
   // TODO: add workoutExercise from db etc -> send in via props to leaderboard
@@ -38,7 +37,6 @@ export default async function Home() {
     </SignedOut>
     <Navbar />
     <Leaderboard 
-      exercises={exercises} 
       allPRs={allPRs}
     />
     </>

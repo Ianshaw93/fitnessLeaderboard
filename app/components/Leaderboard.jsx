@@ -10,13 +10,13 @@ import useApp from '@/store/useApp'
 // TODO: use prData for leaderboard data
 
 // need to get 
-export default function Leaderboard({exercises, allPRs}) {
+export default function Leaderboard({allPRs}) {
     // extract username from here?
     console.log("allprs: ", allPRs)
     // const leaderboardData = useApp((state) => state.leaderboardData)
 
-    const [selectedCategory, setSelectedCategory] = useState(allPRs[0]["exerciseName"]) // should be exercises appearing in data only
-    const recordCategories = allPRs.map((item) => item.exerciseName)//Object.keys(dummyLeaderboard[0]['personal_records'])
+    const [selectedCategory, setSelectedCategory] = useState(allPRs[0]["exerciseName"]) 
+    const recordCategories = allPRs.map((item) => item.exerciseName)
     
     const categoryDropdownContent = recordCategories.map((item) => {
         return <option key={item} value={item}>{item.split('_').join(' ')}</option>
