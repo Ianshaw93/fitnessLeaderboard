@@ -11,12 +11,15 @@ export default async function ProfilePage() {
   const user:AuthUser = await currentUser();
   const allPRs = await getAllPRs()
   // need a client component for image likely
+  const subHeaderText = 'text-4xl capitalize font-thin text-gray-500'
 
   let filteredPRs = allPRs.filter(pr => pr.userId === user.id)
   return (
     <>
+      <div className="min-h-screen bg-[#111B1D]">
+
       <div className="grid items-center justify-center">
-        <div className='py-5'>
+        <div className='py-2 mt-3'>
           <UserButton 
             afterSignOutUrl="/"
             appearance={{
@@ -29,12 +32,12 @@ export default async function ProfilePage() {
         </div>
       {/* </div>
       <div> */}
-      <div className="py-5 flex justify-center">
+      <div className={`py-1 flex justify-center ${subHeaderText}`}>
           {user.firstName} {user.lastName}
       </div>
       </div>
-      <span className="px-5">
-        Personal Records:
+      <span className="px-5 text-3xl capitalize text-gray-500">
+        Personal Records
       </span>
       <ul>
             {filteredPRs.map((item, index) => {
@@ -56,6 +59,7 @@ export default async function ProfilePage() {
             })}
         </ul>
         <Navbar/>
+      </div>
     </>
   )
 }

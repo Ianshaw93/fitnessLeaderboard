@@ -146,7 +146,7 @@ const categoryDropdown = (
   const subHeaderText = 'text-4xl capitalize font-thin text-gray-500'
     return (
       <>
-        <div  className="min-h-screen bg-[#DED1BF]">
+        <div  className="min-h-screen bg-[#111B1D]">
             <div className={headerText}>
 
               Add Activity:
@@ -184,7 +184,8 @@ const categoryDropdown = (
                   </div>
               <div>
               </div>
-              <button className="px-4 py-2 bg-blue-500 text-white rounded-lg" onClick={handleClick}>
+              {/* font turns gold on press */}
+              <button className="px-4 py-2 bg-[#949797] text-black hover:text-[#E9DC88] rounded-lg" onClick={handleClick}>
             Add
           </button>   
             </div>
