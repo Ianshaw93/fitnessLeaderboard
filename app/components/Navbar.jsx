@@ -16,7 +16,7 @@ export default function Navbar() {
     return (
       <>
 
-<div className="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-black border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600">
+<div className="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-white border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600">
     <div className="grid h-full max-w-lg grid-cols-3 mx-auto">
     <Link href={'/'} className="flex items-center justify-center">
         <div className={`p-2.5 w-10 h-10 items-center fixed inline-block rounded-full ${pathname === '/' ? gold : unselected}`}>

@@ -45,5 +45,5 @@ export type PR = {
     surname: string
     exerciseId: number
     exerciseName: string
-    maxResult: string
+    maxResult: number
 }
