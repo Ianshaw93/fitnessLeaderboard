@@ -23,7 +23,10 @@ export default async function Home() {
   return (
     <>
     <SignedIn>
-      <UserButton />
+      <div className='bg-[#DADEDF]'>
+        <UserButton />
+
+      </div>
       {/* <StoreUser /> */}
     </SignedIn>
     <SignedOut>

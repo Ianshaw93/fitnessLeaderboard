@@ -71,7 +71,7 @@ export default function Leaderboard({allPRs}) {
 // need to change on dropdown between pr's
     return (
       <>
-        <div className="form-control" >
+        <div className="form-control bg-[#DADEDF]" >
             {categoryDropdown}
         </div>
         {/* bg-[#111B1D] [#D6D6D6] drop-shadow-[0_1.2px_1.2px_rgba(255,255,255)]*/}
