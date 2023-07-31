@@ -77,7 +77,7 @@ export default function Leaderboard({allPRs}) {
         {/* bg-[#111B1D] [#D6D6D6] drop-shadow-[0_1.2px_1.2px_rgba(255,255,255)]*/}
       <div  className="min-h-screen bg-[#111B1D]">
         {/* Title  move to own component or function above*/}
-        <div className='grid-cols-3 flex justify-between max-w-full text-2xl font-bold text-[#D6D6D6]'>
+        <div className='grid-cols-3 flex justify-between max-w-full text-2xl font-thin text-[#D6D6D6]'>
             <div className='col-span-1 col-start-1 mx-10'>
                 Rank 
             </div>
