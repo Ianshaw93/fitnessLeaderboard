@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import Leaderboard from './components/Leaderboard'
 // import StoreUser from './components/StoreUser'
 import { addUser } from "@/lib/getUser";
-import { SignInButton, SignedIn, SignedOut, UserButton, currentUser } from '@clerk/nextjs'
+import { RedirectToSignIn, RedirectToSignUp, SignInButton, SignedIn, SignedOut, UserButton, currentUser } from '@clerk/nextjs'
 import { AuthUser } from '@/types';
 import { getAllPRs } from '@/lib/getAllPRs';
 
@@ -30,11 +30,12 @@ export default async function Home() {
       {/* <StoreUser /> */}
     </SignedIn>
     <SignedOut>
-      <SignInButton mode='modal'>
+      <RedirectToSignUp />
+      {/* <SignInButton mode='modal'>
         <button className='bg-[#d4af37] rounded font-bold py-2 px-4'>
         Sign In
         </button>
-        </SignInButton>
+        </SignInButton> */}
       </SignedOut>
     <Navbar />
     <Leaderboard 
