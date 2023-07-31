@@ -142,11 +142,11 @@ const categoryDropdown = (
     }
   }
 
-  const headerText = 'text-5xl capitalize font-thin text-gray-500'
+  const headerText = 'text-5xl capitalize font-thin text-[#D6D6D6] drop-shadow-[0_4px_4px_rgba(0,0,0)]'
   const subHeaderText = 'text-4xl capitalize font-thin text-gray-500'
     return (
       <>
-        <div  className="min-h-screen bg-[#111B1D]">
+        <div  className="min-h-screen bg-gradient-to-t from-gray-600 via-gray-400 to-gray-600">
             <div className={headerText}>
 
               Add Activity:

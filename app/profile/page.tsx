@@ -11,12 +11,12 @@ export default async function ProfilePage() {
   const user:AuthUser = await currentUser();
   const allPRs = await getAllPRs()
   // need a client component for image likely
-  const subHeaderText = 'text-4xl capitalize font-thin text-gray-500'
+  const subHeaderText = 'text-4xl capitalize font-thin text-[#D6D6D6] drop-shadow-[0_4px_4px_rgba(0,0,0)]'
 
   let filteredPRs = allPRs.filter(pr => pr.userId === user.id)
   return (
     <>
-      <div className="min-h-screen bg-[#111B1D]">
+      <div className="min-h-screen bg-gradient-to-t from-gray-600 via-gray-400 to-gray-600">
 
       <div className="grid items-center justify-center">
         <div className='py-2 mt-3'>
@@ -36,7 +36,7 @@ export default async function ProfilePage() {
           {user.firstName} {user.lastName}
       </div>
       </div>
-      <span className="px-5 text-3xl capitalize text-gray-500">
+      <span className="px-5 text-2xl capitalize text-[#D6D6D6] font-thin drop-shadow-[0_4px_4px_rgba(0,0,0)]">
         Personal Records
       </span>
       <ul>

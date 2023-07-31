@@ -70,14 +70,16 @@ export default function Leaderboard({allPRs}) {
 
 // need to change on dropdown between pr's
     return (
+        
+        // bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600
       <>
         <div className="form-control bg-[#DADEDF]" >
             {categoryDropdown}
         </div>
-        {/* bg-[#111B1D] [#D6D6D6] drop-shadow-[0_1.2px_1.2px_rgba(255,255,255)]*/}
-      <div  className="min-h-screen bg-[#111B1D]">
+        {/* bg-[#111B1D] [#D6D6D6] drop-shadow-[0_1.2px_1.2px_rgba(0,0,2)]*/}
+      <div  className="min-h-screen bg-gradient-to-t from-gray-600 via-gray-400 to-gray-600">
         {/* Title  move to own component or function above*/}
-        <div className='grid-cols-3 flex justify-between max-w-full text-2xl font-thin text-[#D6D6D6]'>
+        <div className='grid-cols-3 flex justify-between max-w-full text-2xl font-thin text-[#D6D6D6] drop-shadow-[0_4px_4px_rgba(0,0,0)]'>
             <div className='col-span-1 col-start-1 mx-10'>
                 Rank 
             </div>
