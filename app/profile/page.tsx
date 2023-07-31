@@ -11,6 +11,8 @@ export default async function ProfilePage() {
   const user:AuthUser = await currentUser();
   const allPRs = await getAllPRs()
   // need a client component for image likely
+
+  let filteredPRs = allPRs.filter(pr => pr.userId === user.id)
   return (
     <>
       <div className="grid items-center justify-center">
@@ -35,7 +37,7 @@ export default async function ProfilePage() {
         Personal Records:
       </span>
       <ul>
-            {allPRs.map((item, index) => {
+            {filteredPRs.map((item, index) => {
                 return (
                     <>
                     <li key={item.userId}>

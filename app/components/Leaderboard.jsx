@@ -1,7 +1,6 @@
 "use client"
 import { useState } from 'react'
 import LeaderboardCard from './LeaderboardCard'
-import useApp from '@/store/useApp'
 
 // needs to pass in db data from server component
 // TODO: use workoutExercise data only; add sql dummy data; filter by user
