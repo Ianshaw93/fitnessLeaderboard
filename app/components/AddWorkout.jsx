@@ -5,6 +5,12 @@ import useApp from '@/store/useApp'
 import { useUser } from '@clerk/nextjs';
 // import axios from 'axios'
 import { addWorkout } from '@/lib/addWorkout';
+const serverUrl = {
+  "remote": 'https://fitness-leaderboard.vercel.app/',
+  "localHost": 'http://localhost:3000/'
+}
+const baseUrl = process.env["NEXT_PUBLIC_BASE_URL"]
+console.log("baseUrl: ", baseUrl)
 
 // TODO: get exerciseIds for each exercise
 export default function AddWorkout({exercises}) { // later control with context or zustand
@@ -13,6 +19,7 @@ export default function AddWorkout({exercises}) { // later control with context 
   const [selectedCategory, setSelectedCategory] = useState(exercises[0]["name"])
   const recordCategories = exercises.map((item) => item.name)
   const [result, setResult] = useState(null)
+  
 
   const leaderboardData = useApp((state) => state.leaderboardData)
   const setLeaderboardData = useApp((state) => state.setLeaderboardData)
@@ -38,7 +45,9 @@ export default function AddWorkout({exercises}) { // later control with context 
     console.log("uID addWorkout: ", userId)
     try {
       if (!workoutAdded) {
-        const res = await fetch('http://localhost:3000/api/workouts',{
+        // use env variables remote and local!!
+        // process.env["BASE_URL"]
+        const res = await fetch(`${baseUrl}api/workouts`,{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -91,7 +100,7 @@ export default function AddWorkout({exercises}) { // later control with context 
 
 
             console.log("workoutExercises fetch call")
-            const res = await fetch('http://localhost:3000/api/workoutExercises', {
+            const res = await fetch(`${baseUrl}api/workoutExercises`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

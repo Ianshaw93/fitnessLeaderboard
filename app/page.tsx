@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import Leaderboard from './components/Leaderboard'
 // import StoreUser from './components/StoreUser'
 import { addUser } from "@/lib/getUser";
-import { RedirectToSignIn, RedirectToSignUp, SignInButton, SignedIn, SignedOut, UserButton, currentUser } from '@clerk/nextjs'
+import { RedirectToSignIn, RedirectToSignUp, SignInButton, SignUp, SignedIn, SignedOut, UserButton, currentUser } from '@clerk/nextjs'
 import { AuthUser } from '@/types';
 import { getAllPRs } from '@/lib/getAllPRs';
 
@@ -31,6 +31,7 @@ export default async function Home() {
     </SignedIn>
     <SignedOut>
       <RedirectToSignUp />
+      {/* <SignUp path="/sign-up" routing="path" signInUrl="/sign-in" /> */}
       {/* <SignInButton mode='modal'>
         <button className='bg-[#d4af37] rounded font-bold py-2 px-4'>
         Sign In
