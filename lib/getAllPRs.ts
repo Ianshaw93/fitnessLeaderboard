@@ -9,14 +9,14 @@ export async function getAllPRs() {
 const conn = connect(config);
 const db = drizzle(conn);
 
-// const allUsers = await db.select().from(users);
-// console.log(allUsers);
+const allUsers = await db.select().from(users);
+console.log(allUsers);
 
-// const allWorkouts = await db.select().from(workouts);
-// console.log(allWorkouts);
+const allWorkouts = await db.select().from(workouts);
+console.log(allWorkouts);
 
-// const allWorkoutExercises = await db.select().from(workoutExercises);
-// console.log(allWorkoutExercises);
+const allWorkoutExercises = await db.select().from(workoutExercises);
+console.log(allWorkoutExercises);
 
 const result= await db.select({
     userId: users.userId,

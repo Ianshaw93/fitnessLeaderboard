@@ -37,16 +37,15 @@ export async function addUser(firstName: string,surname: string, userId: string)
 
   if (!userExists(results, userId)) {
 
-
     await db.insert(users).values({
       userId,
       firstName,
       surname,
     }).then((result)=> {
-      console.log({result});
+      console.log("new userInfo:",result);
       return result;
     }).catch((err) => {
-      console.log(err)
+      console.log("error adding user: ",err)
       return err;
     })
   } else{

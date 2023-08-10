@@ -14,7 +14,7 @@ export default async function Home() {
   // console.log("user: ", user.id, user.firstName, user.lastName)
   if (SignedIn && user && user.id) {
 
-    addUser(user.id, user.firstName, user.lastName)
+    addUser(user.firstName, user.lastName, user.id)
   }
   const allPRs = await getAllPRs()
   // pass userDetails down to client components?
@@ -31,13 +31,7 @@ export default async function Home() {
     </SignedIn>
     <SignedOut>
       <RedirectToSignUp />
-      {/* <SignUp path="/sign-up" routing="path" signInUrl="/sign-in" /> */}
-      {/* <SignInButton mode='modal'>
-        <button className='bg-[#d4af37] rounded font-bold py-2 px-4'>
-        Sign In
-        </button>
-        </SignInButton> */}
-      </SignedOut>
+    </SignedOut>
     <Navbar />
     <Leaderboard 
       allPRs={allPRs}
