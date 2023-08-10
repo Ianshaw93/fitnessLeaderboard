@@ -12,7 +12,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
     const user = await currentUser();
     // check if in db
-    const response = await addUser(user["userId"], user["firstName"], user["surname"]); 
+    const response = await addUser(user["firstName"], user["surname"], user["userId"]); 
     console.log({response})
     return NextResponse.json({
         status: 201,
