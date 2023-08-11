@@ -55,20 +55,7 @@ export default function Leaderboard({allPRs}) {
             return bValue - aValue;
           });
 
-    // let sortedLeaderboard = [...allPRs].sort((a, b) => {
-    //     const aValue = a.personal_records[selectedCategory];
-    //     const bValue = b.personal_records[selectedCategory];
-      
-    //     // If aValue is null or undefined, always move it down
-    //     // If bValue is null or undefined, always move it down unless aValue is also null or undefined
-    //     if (aValue === null || aValue === undefined) return 1;
-    //     if (bValue === null || bValue === undefined) return -1;
-      
-    //     // If neither value is null or undefined, compare as normal
-    //     return bValue - aValue;
-    //   });
-
-// need to change on dropdown between pr's
+    console.log("sortedLeaderboard: ", sortedLeaderboard)
     return (
         
         // bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600
@@ -92,13 +79,14 @@ export default function Leaderboard({allPRs}) {
         </div>
         <ul>
             {sortedLeaderboard.map((item, index) => {
+                console.log("item: ", item, index)
                 return (
                     <>
-                    <li key={item.name}>
+                    <li key={item.firstName}>
                         <LeaderboardCard 
                             key={item.id}
                             rank={index+1}
-                            name={item.name} 
+                            name={item.firstName + " " + item.surname} 
                             weightLifted_kg={item.maxResult}
 
                         /> 
