@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import useApp from '@/store/useApp'
 import { useUser } from '@clerk/nextjs';
+import Toast from './Toast'
 // import axios from 'axios'
 import { addWorkout } from '@/lib/addWorkout';
 const serverUrl = {
@@ -19,6 +20,7 @@ export default function AddWorkout({exercises}) { // later control with context 
   const [selectedCategory, setSelectedCategory] = useState(exercises[0]["name"])
   const recordCategories = exercises.map((item) => item.name)
   const [result, setResult] = useState(null)
+  const [ showToast, setShowToast ] = useState({ visible: false, type: '', message: '' })
   
 
   const leaderboardData = useApp((state) => state.leaderboardData)
@@ -39,6 +41,27 @@ export default function AddWorkout({exercises}) { // later control with context 
       .map(exercise => exercise.exerciseId);
   }
 
+  const handleAddExercise = async(workoutId, selectedCategory, notes, result, reps, sets, ) => { 
+    try {
+      const result = await actionAddWorkoutExercise(
+        response.result.workoutId,
+        selectedCategory,
+        "notes",
+        parseFloat(result).toFixed(2),
+        1,
+        1,
+        "n/a"
+        )
+
+      if (result.success) {
+        setShowToast({visible: true, type: 'success', message: 'Exercise added successfully'})
+      } else {
+        setShowToast({visible: true, type: 'error', message: 'Failed to add exercise'})
+      }
+  } catch (error) { 
+      setShowToast({visible: true, type: 'error', message: 'Failed to add exercise'})
+  }
+}
   // run async function througn axios call
   const actionAddWorkout = async (userId) => {
     // needs to return workout id!!
@@ -118,6 +141,16 @@ export default function AddWorkout({exercises}) { // later control with context 
               })
             });
             const response = await res.json();
+            // Further checks based on the content of the response (Optional)
+            if (response.error) {
+              // Handle the error (e.g., show a toast with the error message)
+              setShowToast({ visible: true, type: 'error', message: response.error });
+            } else {
+              console.log("successfully added workout")
+              // Handle the success (e.g., show a toast with a success message)
+              setShowToast({ visible: true, type: 'success', message: 'Successfully added!' });
+            }
+            // place logic here to check if exercise added successfully
             console.log("response clientside workoutExercise", response)
 
   }
@@ -200,6 +233,9 @@ const categoryDropdown = (
             </div>
           </div>
         </div>
+        {showToast.visible && 
+          <Toast type={showToast.type} message={showToast.message} />
+        }
       </>
     )
   }

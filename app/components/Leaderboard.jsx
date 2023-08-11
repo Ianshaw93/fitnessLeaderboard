@@ -2,21 +2,11 @@
 import { useState } from 'react'
 import LeaderboardCard from './LeaderboardCard'
 
-
-// needs to pass in db data from server component
-// TODO: use workoutExercise data only; add sql dummy data; filter by user
-// done - send pr data in
-// done: use pr exercises as categories
-// TODO: use prData for leaderboard data
-
-// need to get 
 export default function Leaderboard({allPRs}) {
-    // extract username from here?
     console.log("allprs: ", allPRs)
-    // const leaderboardData = useApp((state) => state.leaderboardData)
 
     const [selectedCategory, setSelectedCategory] = useState(allPRs[0]["exerciseName"]) 
-    const recordCategories = allPRs.map((item) => item.exerciseName)
+    const recordCategories = [...new Set(allPRs.map((item) => item.exerciseName))]
     
     const categoryDropdownContent = recordCategories.map((item) => {
         return <option key={item} value={item}>{item.split('_').join(' ')}</option>
@@ -34,7 +24,6 @@ export default function Leaderboard({allPRs}) {
             </select>
           </label>
     )
-    // todo filter order for highest in particular lift
 
     function handleInput(event) {
         setSelectedCategory(event.target.value)
@@ -96,7 +85,6 @@ export default function Leaderboard({allPRs}) {
                 )
             })}
         </ul>
-      {/* rank=1, name='Ian Shaw', weightLifted_kg=110, image=null */}
       </div>
       </>
     )
