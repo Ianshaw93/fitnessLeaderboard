@@ -1,3 +1,78 @@
+export const maleStrengthLevels = [
+    {
+        "exerciseName": "Barbell Shoulder Press",
+        "weightLevels": {
+            "Beginner": 31,
+            "Novice": 46,
+            "Intermediate": 64,
+            "Advanced": 86,
+            "Elite": 109
+        }
+    },
+    {
+        "exerciseName": "Barbell Back Squat",
+        "weightLevels": {
+            "Beginner": 64,
+            "Novice": 93,
+            "Intermediate": 130,
+            "Advanced": 173,
+            "Elite": 219
+        }
+    },
+    {
+        "exerciseName": "Barbell Bentover Rows",
+        "weightLevels": {
+            "Beginner": 41,
+            "Novice": 60,
+            "Intermediate": 85,
+            "Advanced": 115,
+            "Elite": 147
+        }
+    },
+    {
+        "exerciseName": "Barbell Power Cleans",
+        "weightLevels": {
+            "Beginner": 46,
+            "Novice": 67,
+            "Intermediate": 92,
+            "Advanced": 121,
+            "Elite": 152
+        }
+    },
+    {
+        "exerciseName": "Barbell Romanian Deadlift",
+        "weightLevels": {
+            "Beginner": 55,
+            "Novice": 84,
+            "Intermediate": 120,
+            "Advanced": 164,
+            "Elite": 211
+        }
+    },
+    {
+        "exerciseName": "Barbell Chest Press",
+        "weightLevels": {
+            "Beginner": 32,
+            "Novice": 57,
+            "Intermediate": 90,
+            "Advanced": 131,
+            "Elite": 177
+        }
+    },
+    {
+        "exerciseName": "Barbell Front Squat",
+        // just copied the back squat values for now
+        "weightLevels": {
+            "Beginner": 64,
+            "Novice": 93,
+            "Intermediate": 130,
+            "Advanced": 173,
+            "Elite": 219
+        }
+    }
+]
+
+
 export const dummyLeaderboard = [
     {
     "id": "0000", 

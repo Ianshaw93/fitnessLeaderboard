@@ -3,6 +3,7 @@ import { UserButton, currentUser } from "@clerk/nextjs";
 import LeaderboardCard from "../components/LeaderboardCard";
 import { AuthUser, PR } from "@/types";
 import Navbar from "../components/Navbar";
+import Progressbar from "../components/Progressbar";
 
 export default async function ProfilePage() {
   // TODO: profile image
@@ -38,12 +39,18 @@ export default async function ProfilePage() {
       </div>
       <span className="px-5 text-2xl capitalize text-[#D6D6D6] font-thin drop-shadow-[0_4px_4px_rgba(0,0,0)]">
         Personal Records
+        {/* have progress bar for each lift */}
       </span>
       <ul>
             {filteredPRs.map((item, index) => {
                 return (
                     <>
                     <li key={item.userId}>
+                        <Progressbar
+                          key={index} 
+                          exerciseName={item.exerciseName}
+                          pr={item.maxResult}
+                        />
                         <LeaderboardCard 
                             key={index}
                             rank={index+1}
