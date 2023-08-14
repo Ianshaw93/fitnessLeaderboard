@@ -11,20 +11,26 @@ export default function Progressbar({progression, minLevel, maxLevel, pr}) {
     if (progression > 85) { 
         highProgression = true
     }
-    pr = (Number(pr)).toFixed(2)
+    pr = (Number(pr)).toFixed(0)
     return(
         <>
         {/* have smaller text for mobile */}
         <div className="relative w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
             <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: `${progression}%` }}></div>
-            <div className='flex justify-between mt-1'>
+            <div className='flex justify-between mt-1 '>
                 {/* if pr close to levels, don't show levels  - if progression close to 0->15% or 85->100%*/}
-                <span className={lowProgression ? "opacity-0" : ""}>{minLevel}kg</span>
-                <span className={highProgression ? "opacity-0" : ""}>{maxLevel}kg</span>
+                <span 
+                    className={lowProgression ? "opacity-0" : ""}
+                    style={{transform: 'translateX(-40%)'}}
+                >{minLevel}kg</span>
+                <span 
+                    className={highProgression ? "opacity-0" : ""}
+                    style={{transform: 'translateX(40%)'}}
+                >{maxLevel}kg</span>
             </div>
             <div 
                 className="absolute top-full mt-1 font-bold text-center" 
-                style={{ left: `calc(${progression}%)`, transform: 'translateX(-50%)' }}
+                style={{ left: `calc(${progression}%)`, transform: 'translateX(-40%)' }}
             >
                 {pr}kg
             </div>

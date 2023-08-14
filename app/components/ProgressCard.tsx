@@ -17,9 +17,10 @@ export default function ProgressCard({weightLifted_kg=110, exerciseName='Barbell
 
             {exerciseName}
         </div>
-        <div>
+        <div className='pl-2' >
 
-        Lvl: {currentLevel}
+        Lvl: 
+        <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">{currentLevel}</span>
         </div>
       </div>
       <div className='my-2 mb-7'>
