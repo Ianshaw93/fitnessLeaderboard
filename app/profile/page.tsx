@@ -1,9 +1,8 @@
 import { getAllPRs } from "@/lib/getAllPRs";
 import { UserButton, currentUser } from "@clerk/nextjs";
-import LeaderboardCard from "../components/LeaderboardCard";
 import { AuthUser, PR } from "@/types";
 import Navbar from "../components/Navbar";
-import Progressbar from "../components/Progressbar";
+import ProgressCard from "../components/ProgressCard";
 
 export default async function ProfilePage() {
   // TODO: profile image
@@ -46,20 +45,11 @@ export default async function ProfilePage() {
                 return (
                     <>
                     <li key={item.userId}>
-                        <Progressbar
+                        <ProgressCard
                           key={index} 
                           exerciseName={item.exerciseName}
-                          pr={item.maxResult}
+                          weightLifted_kg={(item.maxResult as number)}
                         />
-                        <LeaderboardCard 
-                            key={index}
-                            rank={index+1}
-                            name={item.exerciseName} 
-                            weightLifted_kg={(item.maxResult as number)}
-                            
-
-                        /> 
-
                     </li>
                     </>
                 )
