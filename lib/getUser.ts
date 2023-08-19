@@ -28,6 +28,7 @@ export async function addUser(firstName: string,surname: string, userId: string)
   const db = drizzle(conn)
   
   console.log("addUser func")
+  console.log("user to check if returning: ", firstName, surname, userId)
   const results: User[] = await db.select({
     userId: users.userId,
     firstName: users.firstName,
