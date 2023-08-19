@@ -6,6 +6,7 @@ import { useUser } from '@clerk/nextjs';
 import Toast from './Toast'
 // import axios from 'axios'
 import { addWorkout } from '@/lib/addWorkout';
+import ProgressCard from './ProgressCard';
 const serverUrl = {
   "remote": 'https://fitness-leaderboard.vercel.app/',
   "localHost": 'http://localhost:3000/'
@@ -21,6 +22,7 @@ export default function AddWorkout({exercises}) { // later control with context 
   const recordCategories = exercises.map((item) => item.name)
   const [result, setResult] = useState(null)
   const [ showToast, setShowToast ] = useState({ visible: false, type: '', message: '' })
+  const [ prResult, setPrResult ] = useState(0) // later get from db
   
 
   const leaderboardData = useApp((state) => state.leaderboardData)
@@ -170,6 +172,7 @@ const categoryDropdown = (
 
   function handleInput(event) {
     setSelectedCategory(event.target.value)
+    setPrResult(0) // should find pr results for specific exercise
   }
 
   function handleClick(event) {
@@ -180,6 +183,9 @@ const categoryDropdown = (
       // user_2Sf9kBd0GnJCj2VgBcGqOcWB8p6
       // check if new workouts
       actionAddWorkout(user.id)
+      // below should be on success of adding workout 
+      // and confirmation of pr achieved
+      setPrResult(result)
 
     }
   }
@@ -215,6 +221,7 @@ const categoryDropdown = (
                 value={result ? result : ""}
                 onChange={(e) => {
                   setResult(e.target.value)
+                  
                 }
 
                 }
@@ -233,6 +240,12 @@ const categoryDropdown = (
           </button>   
             </div>
           </div>
+        {/* 
+            * TODO: add PR progressbar animation
+            * later need to access current PR for each exercise
+            * change weight when weight added (later => and new PR achieved) 
+        */}
+        <ProgressCard weightLifted_kg={prResult} exerciseName={selectedCategory}/>
         </div>
         {showToast.visible && 
           <Toast type={showToast.type} message={showToast.message} />
