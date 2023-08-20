@@ -24,7 +24,7 @@ export default function ProgressCard({weightLifted_kg=110, exerciseName='Barbell
         </div>
       </div>
       <div className='my-2 mb-7'>
-        <Progressbar pr={weightLifted_kg} progression={progression} minLevel={minLevel} maxLevel={maxLevel}/>
+        <Progressbar pr={weightLifted_kg} progression={progression} minLevel={minLevel} maxLevel={maxLevel} levelName={currentLevel}/>
 
       </div>
     </div>
