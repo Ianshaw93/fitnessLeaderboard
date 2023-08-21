@@ -13,22 +13,19 @@ const serverUrl = {
 const baseUrl = process.env["NEXT_PUBLIC_BASE_URL"]
 console.log("baseUrl: ", baseUrl)
 
-// TODO: get exerciseIds for each exercise
-export default function AddWorkout({exercises}) { // later control with context or zustand
+// TODO: get pr's for each exercise
+// if new pr then show pr toast with fire emoji
+export default function AddWorkout({exercises, userPRs}) { // later control with context or zustand
   // either store users etc on zustand or download fresh each time and this be a serverside component
   const { isLoaded, isSignedIn, user } = useUser();
   const [selectedCategory, setSelectedCategory] = useState(exercises[0]["name"])
   const recordCategories = exercises.map((item) => item.name)
   const [result, setResult] = useState(null)
   const [ showToast, setShowToast ] = useState({ visible: false, type: '', message: '' })
+  const [ showPrToast, setShowPrToast ] = useState({ visible: false, type: '', message: '' })
   
+  console.log("userPRs", userPRs.filter((item) => item.exerciseName === selectedCategory)[0]['maxResult'])
 
-  const leaderboardData = useApp((state) => state.leaderboardData)
-  const setLeaderboardData = useApp((state) => state.setLeaderboardData)
-  const workoutLogData = useApp((state) => state.workoutLogData)
-  const setWorkoutLogData = useApp((state) => state.setWorkoutLogData)
-  // const currentUser = useApp((state) => state.currentUser)
-  
   const categoryDropdownContent = recordCategories.map((item) => {
     return <option key={item} value={item}>{item.split('_').join(' ')}</option>
 })
@@ -41,27 +38,6 @@ export default function AddWorkout({exercises}) { // later control with context 
       .map(exercise => exercise.exerciseId);
   }
 
-  const handleAddExercise = async(workoutId, selectedCategory, notes, result, reps, sets, ) => { 
-    try {
-      const result = await actionAddWorkoutExercise(
-        response.result.workoutId,
-        selectedCategory,
-        "notes",
-        parseFloat(result).toFixed(2),
-        1,
-        1,
-        "n/a"
-        )
-
-      if (result.success) {
-        setShowToast({visible: true, type: 'success', message: 'Exercise added successfully'})
-      } else {
-        setShowToast({visible: true, type: 'error', message: 'Failed to add exercise'})
-      }
-  } catch (error) { 
-      setShowToast({visible: true, type: 'error', message: 'Failed to add exercise'})
-  }
-}
   // run async function througn axios call
   const actionAddWorkout = async (userId) => {
     // needs to return workout id!!
@@ -149,6 +125,12 @@ export default function AddWorkout({exercises}) { // later control with context 
               console.log("successfully added workout")
               // Handle the success (e.g., show a toast with a success message)
               setShowToast({ visible: true, type: 'success', message: 'Successfully added!' });
+              setShowPrToast({ visible: true, type: 'success', message: 'New PR! 🔥' });
+              // check if new pr
+              if (userPRs.filter((item) => item.exerciseName === selectedCategory)[0]['maxResult'] < result) {
+                setShowPrToast({ visible: true, type: 'success', message: 'New PR! 🔥' });
+              }
+              // if new pr then show pr toast with fire emoji
             }
             // place logic here to check if exercise added successfully
             console.log("response clientside workoutExercise", response)
@@ -175,7 +157,6 @@ const categoryDropdown = (
   function handleClick(event) {
     if (isLoaded && isSignedIn) {
 
-      console.log("leaderboardData data: ", leaderboardData)
       console.log("current user id: ", user)
       // user_2Sf9kBd0GnJCj2VgBcGqOcWB8p6
       // check if new workouts
@@ -234,8 +215,12 @@ const categoryDropdown = (
             </div>
           </div>
         </div>
+        {/* TODO: second toast for pr */}
         {showToast.visible && 
-          <Toast type={showToast.type} message={showToast.message} />
+          <Toast type={showToast.type} message={showToast.message} index={0}/>
+        }
+        {showPrToast.visible &&
+          <Toast type={showPrToast.type} message={showPrToast.message} index={1}/>
         }
       </>
     )
