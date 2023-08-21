@@ -71,7 +71,7 @@ export default function Leaderboard({allPRs}) {
                 console.log("item: ", item, index)
                 return (
                     <>
-                    <li key={item.firstName}>
+                    <li key={item.firstName} className={(sortedLeaderboard.length > 5 && index === sortedLeaderboard.length - 1) ? "pb-20" : ""}>
                         <LeaderboardCard 
                             key={item.id}
                             rank={index+1}
