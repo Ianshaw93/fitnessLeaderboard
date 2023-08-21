@@ -44,7 +44,7 @@ export default async function ProfilePage() {
             {filteredPRs.map((item, index) => {
                 return (
                     <>
-                    <li key={item.userId}>
+                    <li key={item.userId} className={index === filteredPRs.length - 1 ? "pb-20" : ""}>
                         <ProgressCard
                           key={index} 
                           exerciseName={item.exerciseName}
