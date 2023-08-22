@@ -219,9 +219,10 @@ const categoryDropdown = (
         {showToast.visible && 
           <Toast type={showToast.type} message={showToast.message} index={0}/>
         }
-        {showPrToast.visible &&
+        {/* for some reason neither toast showing on android when one was showing before */}
+        {/* {showPrToast.visible &&
           <Toast type={showPrToast.type} message={showPrToast.message} index={1}/>
-        }
+        } */}
       </>
     )
   }
