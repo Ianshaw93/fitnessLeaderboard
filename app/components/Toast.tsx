@@ -5,7 +5,7 @@ import { Toast } from 'flowbite-react';
 export default function Colors({type="success", message="Exercise Added Successfully.", index}) {
 
   return (
-    <div className={`fixed bottom-${index + 1}0 right-4`}>
+    <div className={`fixed bottom-20 right-4`}>
       <Toast>
         <div className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${type == "success" ? "bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200" : "bg-red-100 text-red-500 dark:bg-red-800 dark:text-red-200"}`}>
           {/* <HiCheck className="h-5 w-5" /> */}
