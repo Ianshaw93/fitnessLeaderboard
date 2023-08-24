@@ -125,12 +125,10 @@ export default function AddWorkout({exercises, userPRs}) { // later control with
               console.log("successfully added workout")
               // Handle the success (e.g., show a toast with a success message)
               setShowToast({ visible: true, type: 'success', message: 'Successfully added!' });
-              // setShowPrToast({ visible: true, type: 'success', message: 'New PR! 🔥' });
               // check if new pr
               if (userPRs.filter((item) => item.exerciseName === selectedCategory)[0]['maxResult'] < result) {
                 setShowPrToast({ visible: true, type: 'success', message: 'New PR! 🔥' });
               }
-              // if new pr then show pr toast with fire emoji
             }
             // place logic here to check if exercise added successfully
             console.log("response clientside workoutExercise", response)
