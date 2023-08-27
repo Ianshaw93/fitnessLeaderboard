@@ -22,20 +22,20 @@ export default async function Home() {
   
   return (
     <>
-    <SignedIn>
-      <div className='bg-[#DADEDF]'>
-        <UserButton />
-
-      </div>
-      {/* <StoreUser /> */}
-    </SignedIn>
     <SignedOut>
       <RedirectToSignUp />
     </SignedOut>
+    <SignedIn>
+      {/* <div className='bg-[#DADEDF]'>
+        <UserButton />
+
+      </div> */}
+      {/* <StoreUser /> */}
     <Navbar />
     <Leaderboard 
       allPRs={allPRs}
-    />
+      />
+      </SignedIn>
     </>
   )
 }

@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import LeaderboardCard from './LeaderboardCard'
 
+// TODO: have avatar icons; with fallback to initials
 export default function Leaderboard({allPRs}) {
     console.log("allprs: ", allPRs)
 

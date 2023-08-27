@@ -157,7 +157,7 @@ const categoryDropdown = (
   function handleClick(event) {
     if (isLoaded && isSignedIn) {
 
-      console.log("current user id: ", user)
+      console.log("current user id: ", user.emailAddresses[0])
       // user_2Sf9kBd0GnJCj2VgBcGqOcWB8p6
       // check if new workouts
       actionAddWorkout(user.id)
