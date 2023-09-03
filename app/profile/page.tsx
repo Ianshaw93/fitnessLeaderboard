@@ -3,11 +3,10 @@ import { UserButton, currentUser } from "@clerk/nextjs";
 import { AuthUser, PR } from "@/types";
 import Navbar from "../components/Navbar";
 import ProgressCard from "../components/ProgressCard";
+import Loco from "../components/loco";
 
 export default async function ProfilePage() {
-  // TODO: profile image
-  // name
-  // pr's -> filter for user name
+  // TODO: show svg from user stats
   const user:AuthUser = await currentUser();
   const allPRs = await getAllPRs()
   // need a client component for image likely
@@ -29,6 +28,7 @@ export default async function ProfilePage() {
               },
             }}
           />
+        {/* < Loco /> */}
         </div>
       {/* </div>
       <div> */}

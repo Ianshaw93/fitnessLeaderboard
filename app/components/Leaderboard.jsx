@@ -1,11 +1,18 @@
 "use client"
 import { useState } from 'react'
 import LeaderboardCard from './LeaderboardCard'
+import Tab from './Tab'
 
 // TODO: have avatar icons; with fallback to initials
-export default function Leaderboard({allPRs}) {
+// TODO: filter pr's by group and it's members
+export default function Leaderboard({allPRs, groupMembers=null, groupName=null}) {
     console.log("allprs: ", allPRs)
+    // filter all prs by groupMembers
+    if (groupMembers) {
 
+        allPRs = allPRs.filter(pr => groupMembers.includes(pr.userId))
+    }
+    // if group is null, then show all prs
     const [selectedCategory, setSelectedCategory] = useState(allPRs[0]["exerciseName"]) 
     const recordCategories = [...new Set(allPRs.map((item) => item.exerciseName))]
     
