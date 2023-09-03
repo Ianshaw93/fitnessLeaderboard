@@ -24,7 +24,8 @@ export default function AddWorkout({exercises, userPRs}) { // later control with
   const [ showToast, setShowToast ] = useState({ visible: false, type: '', message: '' })
   const [ showPrToast, setShowPrToast ] = useState({ visible: false, type: '', message: '' })
   
-  console.log("userPRs", userPRs.filter((item) => item.exerciseName === selectedCategory)[0]['maxResult'])
+  
+  // console.log("userPRs", userPRs.filter((item) => item.exerciseName === selectedCategory)[0]['maxResult'])
 
   const categoryDropdownContent = recordCategories.map((item) => {
     return <option key={item} value={item}>{item.split('_').join(' ')}</option>
