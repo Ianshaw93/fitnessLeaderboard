@@ -42,14 +42,14 @@ return (
       
       }
       <Tabs.Content
-        className="grow p-5 bg-white rounded-b-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
+        className="grow bg-white rounded-b-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
         value="tab1"
       >
         <Leaderboard allPRs={allPRs}/>
       </Tabs.Content>
       {userGroups && <>
       <Tabs.Content
-        className="grow p-5 bg-white rounded-b-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
+        className="grow bg-white rounded-b-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
         value="tab2"
       >
         <Leaderboard allPRs={allPRs} groupMembers={group.userIds} groupName={group.groupName}/>
