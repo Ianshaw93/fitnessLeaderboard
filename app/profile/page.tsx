@@ -3,7 +3,6 @@ import { UserButton, currentUser } from "@clerk/nextjs";
 import { AuthUser, PR } from "@/types";
 import Navbar from "../components/Navbar";
 import ProgressCard from "../components/ProgressCard";
-import Loco from "../components/loco";
 
 export default async function ProfilePage() {
   // TODO: show svg from user stats
