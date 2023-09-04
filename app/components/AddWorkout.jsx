@@ -128,7 +128,8 @@ export default function AddWorkout({exercises, userPRs}) { // later control with
               setShowToast({ visible: true, type: 'success', message: 'Successfully added!' });
               // setShowPrToast({ visible: true, type: 'success', message: 'New PR! 🔥' });
               // check if new pr
-              if (userPRs.filter((item) => item.exerciseName === selectedCategory)[0]['maxResult'] < result) {
+              console.log("selectedCategory: ", selectedCategory)
+              if (selectedCategory[0]['maxResult'] ==='undefined' || userPRs.filter((item) => item.exerciseName === selectedCategory)[0]['maxResult'] < result) {
                 setShowPrToast({ visible: true, type: 'success', message: 'New PR! 🔥' });
               }
               // if new pr then show pr toast with fire emoji
