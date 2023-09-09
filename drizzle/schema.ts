@@ -1,6 +1,4 @@
-import { mysqlTable, mysqlSchema, AnyMySqlColumn, int, varchar, text, primaryKey, char, decimal, date } from "drizzle-orm/mysql-core"
-import { sql } from "drizzle-orm"
-
+import { mysqlTable, int, varchar, text, primaryKey, char, decimal, date } from "drizzle-orm/mysql-core"
 
 export const exercises = mysqlTable("Exercises", {
 	exerciseId: int("ExerciseID").autoincrement().primaryKey().notNull(),
