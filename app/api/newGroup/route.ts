@@ -31,6 +31,6 @@ export async function POST(request: Request) {
     const response = await db.insert(groups).values(newGroup); 
     console.log({response})
     return NextResponse.json({
-        result: response,
+        groupId: response.insertId,
     })
 }
